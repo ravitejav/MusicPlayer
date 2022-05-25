@@ -31,8 +31,10 @@ jobs:
         run: npm run export
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
-          branch: gh-pages
-          folder: out
+      - name: DEPLOYING TO GH-PAGES
+        uses: crazy-max/ghaction-github-pages@v2.5.0
+        with: 
+          target_branch: gh-pages
+          build_dir: out
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_KEY }}
